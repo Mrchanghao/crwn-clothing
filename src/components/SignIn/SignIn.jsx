@@ -15,10 +15,10 @@ class SignIn extends Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChnage = this.handleChnage.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChnage = (e) => {
+  handleChange = (e) => {
     const {value, name} = e.target 
 
     this.setState({
@@ -46,12 +46,12 @@ class SignIn extends Component {
         <form onSubmit={this.handleSubmit}>
           <FormInput
             label={'email'}
-            handleChange={this.handleChnage}
+            handleChange={this.handleChange}
             type="email" name='email' required value={email}/>
           {/* <label htmlFor="email">EMAIL</label> */}
           <FormInput 
             label={'password'}
-            handleChange={this.handleChnage}
+            handleChange={this.handleChange}
             type="password" name='password' required value={password} />
           {/* <label htmlFor="password">Password</label> */}
           <div className='buttons'>
