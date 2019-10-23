@@ -1,7 +1,8 @@
 import cartActionTypes from './cartTypes';
 
 const INITIAL_STATE = {
-  hidden: false
+  hidden: false,
+  cartItems: []
 };
 
 
