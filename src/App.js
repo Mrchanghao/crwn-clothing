@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import './App.css';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import HomePage from './page/homepage/homepage';
 import ShopPage from './page/shoppage/shopPage';
 import Header from './components/Header/Header'
@@ -43,16 +43,22 @@ class App extends PureComponent {
         <Switch>
           <Route path='/' exact component={HomePage} />
           <Route path='/shop' component={ShopPage} />
-          <Route path='/signin' component={SignInSignUp} />
+          {/* <Route path='/signin' component={SignInSignUp} /> */}
+          <Route path='/signin' render={() => this.props.currentUser ? 
+            <Redirect to='/' /> : <SignInSignUp /> } />
         </Switch>
       </div>
     );
   }
 }
 
+const mapStateToProps = ({user}) => ({
+  currentUser: user.currentUser
+});
+
 // const mapDispatchToProps = (dispatch) => ({
 //   setCurrentUser: user => dispatch(setCurrentUser(user))
 // })
 
 // export default connect(null, mapDispatchToProps)(App);
-export default connect(null, {setCurrentUser})(App);
+export default connect(mapStateToProps, {setCurrentUser})(App);
