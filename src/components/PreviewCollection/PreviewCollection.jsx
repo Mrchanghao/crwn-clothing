@@ -9,13 +9,13 @@ const PreviewCollection = ({title, items}) => (
     <div className='preview'>
 
       {
-        items.filter((item, idx) => idx < 4).map(({id, price, name, imageUrl}) => (
+        items.filter((item, idx) => idx < 4).map((item) => (
           <CollectionItem 
-          key={id}
-          id={id} price={price} name={name} imageUrl={imageUrl} />
+          key={item.id}
+          id={item.id} item={item} />
         ))
       }
-
+      
     </div>
   </div>
 )

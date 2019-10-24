@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import {SHOP_DATA} from '../../data/collection'
+import SHOP_DATA from '../../data/collection'
 import PreviewCollection from '../../components/PreviewCollection/PreviewCollection'
 
 export default class ShopPage extends PureComponent {
