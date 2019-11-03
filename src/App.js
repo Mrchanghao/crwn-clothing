@@ -1,8 +1,11 @@
 import React, {PureComponent} from 'react';
 import './App.css';
 import {Route, Switch, Redirect} from 'react-router-dom';
+
 import HomePage from './page/homepage/homepage';
 import ShopPage from './page/shoppage/shopPage';
+import CheckoutPage from './page/checkoutPage/CheckoutPage';
+
 import Header from './components/Header/Header'
 import SignInSignUp from './page/SignInSignUp/SignIn';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
@@ -10,6 +13,8 @@ import {setCurrentUser} from './redux/user/userAction';
 import {createStructuredSelector} from 'reselect';
 import {selectCurrentUser} from './redux/user/user.selector';
 import {connect} from 'react-redux';
+
+
 class App extends PureComponent {
 
   subscribeFromAuth = null;
@@ -45,6 +50,7 @@ class App extends PureComponent {
         <Switch>
           <Route path='/' exact component={HomePage} />
           <Route path='/shop' component={ShopPage} />
+          <Route path='/checkout' exact component={CheckoutPage} />
           {/* <Route path='/signin' component={SignInSignUp} /> */}
           <Route path='/signin' render={() => this.props.currentUser ? 
             <Redirect to='/' /> : <SignInSignUp /> } />

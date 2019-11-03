@@ -16,7 +16,8 @@ class SignUp extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    const {displayName, password, confirmPassword, email} = this.state;
+
+    const { displayName, email, password, confirmPassword } = this.state;
 
     if(password !== confirmPassword) {
       alert("password doesn't match");
@@ -25,7 +26,9 @@ class SignUp extends Component {
 
     try {
       const {user} = await auth.createUserWithEmailAndPassword(email, password);
+
       await createUserProfileDocument(user, {displayName});
+      console.log(user)
       this.setState({
         displayName: '',
         password: '',
@@ -53,7 +56,7 @@ class SignUp extends Component {
       <div className='sign-up'>
         <h2 className='title'>Don't you have an account?</h2>
         <span>Sign up with email and password</span>
-        <form className='sign=up-form' onSubmit={this.handleSubmit}> 
+        <form className='sign-up-form' onSubmit={this.handleSubmit}> 
           <FormInput name='displayName' type='text' 
             value={displayName}
             onChange={this.handleChange}
