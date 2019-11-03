@@ -24,6 +24,17 @@
 
   .quantity {
     padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    .arrow {
+      cursor: pointer;
+      margin-left: -6px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .value {
+      margin: 10px 0;
+    }
   }
 
   .remove-button {
