@@ -14,12 +14,12 @@ import {createStructuredSelector} from 'reselect';
 import {selectCurrentUser} from './redux/user/user.selector';
 import {connect} from 'react-redux';
 
-
 class App extends PureComponent {
 
   subscribeFromAuth = null;
 
   componentDidMount() {
+
     this.subscribeFromAuth = auth.onAuthStateChanged(async user => {
       if(user) {
         const userRef = await createUserProfileDocument(user);
@@ -33,7 +33,6 @@ class App extends PureComponent {
         
       } else {
         this.props.setCurrentUser(user)
-        
       }
     });
     
@@ -61,7 +60,7 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 });
 
 // const mapDispatchToProps = (dispatch) => ({
