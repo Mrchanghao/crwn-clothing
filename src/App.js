@@ -19,7 +19,7 @@ class App extends PureComponent {
   subscribeFromAuth = null;
 
   componentDidMount() {
-
+    
     this.subscribeFromAuth = auth.onAuthStateChanged(async user => {
       if(user) {
         const userRef = await createUserProfileDocument(user);
@@ -31,9 +31,12 @@ class App extends PureComponent {
           })
         })
         
-      } else {
-        this.props.setCurrentUser(user)
-      }
+      } 
+      this.props.setCurrentUser(user)
+      // addCollectionAndDocuments('collections', collectionsArray.map(({title, items}) => (
+      //   {title, items}
+      //   ))
+      // );
     });
     
   };
